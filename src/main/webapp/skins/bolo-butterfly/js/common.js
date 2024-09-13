@@ -8002,7 +8002,7 @@
         loadVditor: function(e) {
             o.a.ajax({
                 method: "GET",
-                url: "https://cdn.jsdelivr.net/npm/vditor@3.8.5/dist/index.min.js",
+                url: "https://file.fishpi.cn/vditor/3.8.13/dist/index.min.js",
                 dataType: "script",
                 cache: !0,
                 success: function() {
@@ -8240,13 +8240,13 @@
         },
         initArticle: function() {
             page.share(), initCanvas("articleTop"), $(window).width() >= 768 ? $(".post__toc").css({
-                left: document.querySelector(".article__content").getBoundingClientRect().right + 20,
+                left: document.querySelector("article").getBoundingClientRect().right + 20,
                 right: "auto",
                 display: "block"
             }) : $(".side__top--toc").click((function() {
                 $(".post__toc").slideToggle()
             }));
-            var e = $(".vditor-reset [id^=toc_h]"),
+            var e = $("#article-container [id^=b3_solo_h]"),
                 t = $(".article__toc");
             t.find("a").click((function(e) {
                 var t = $(this).attr("href");

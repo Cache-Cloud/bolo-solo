@@ -37,9 +37,7 @@ import org.b3log.latke.util.Stopwatchs;
 import org.b3log.latke.util.Strings;
 import org.b3log.solo.bolo.prop.MailService;
 import org.b3log.solo.bolo.waf.WAF;
-import org.b3log.solo.event.B3ArticleSender;
-import org.b3log.solo.event.B3ArticleUpdater;
-import org.b3log.solo.event.PluginRefresher;
+import org.b3log.solo.event.*;
 import org.b3log.solo.model.Option;
 import org.b3log.solo.processor.InitCheckHandler;
 import org.b3log.solo.processor.KanBanNiangProcessor;
@@ -81,7 +79,7 @@ public final class SoloServletListener extends AbstractServletListener {
     public static final String STABLE_EN = "Stable";
     public static final String BETA_CN = "内测版";
     public static final String BETA_EN = "Beta";
-    public static final String BOLO_VERSION_SOURCE = "2.5";
+    public static final String BOLO_VERSION_SOURCE = "2.6";
     public static final String BOLO_VERSION = "v" + BOLO_VERSION_SOURCE + " " + STABLE_CN;
     public static final String BOLO_VERSION_EN = "v" + BOLO_VERSION_SOURCE + " " + STABLE_EN;
     // public static final String BOLO_VERSION = "v" + BOLO_VERSION_SOURCE + " " + BETA_CN;
@@ -159,6 +157,7 @@ public final class SoloServletListener extends AbstractServletListener {
                 "█     zeekling   (Contributor)    █    https://github.com/zeekling     █\n" +
                 "█     csfwff     (Contributor)    █    https://github.com/csfwff       █\n" +
                 "█     teahouse   (Contributor)    █    https://github.com/teahouse15   █\n" +
+                "█     Gakkiyomi  (Contributor)    █    https://github.com/gakkiyomi    █\n" +
                 "████████████████████████████████████████████████████████████████████████\n" +
                 " \n" +
                 "┌\n" +
@@ -295,6 +294,12 @@ public final class SoloServletListener extends AbstractServletListener {
             eventManager.registerListener(articleSender);
             final B3ArticleUpdater articleUpdater = beanManager.getReference(B3ArticleUpdater.class);
             eventManager.registerListener(articleUpdater);
+            final FishPiArticleSender fishPiArticleSender = beanManager.getReference(FishPiArticleSender.class);
+            eventManager.registerListener(fishPiArticleSender);
+            final FishPiArticleUpdater fishPiArticleUpdater = beanManager.getReference(FishPiArticleUpdater.class);
+            eventManager.registerListener(fishPiArticleUpdater);
+            final DeleteArticleListener deleteArticleListener = beanManager.getReference(DeleteArticleListener.class);
+            eventManager.registerListener(deleteArticleListener);
         } catch (final Exception e) {
             LOGGER.log(Level.ERROR, "Register event handlers failed", e);
 

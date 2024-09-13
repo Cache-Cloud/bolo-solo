@@ -83,6 +83,7 @@ public class Options {
                 Option.ID_C_KANBANNIANG_SELECTOR,
                 Option.ID_C_EDITOR_MODE,
                 Option.ID_C_B3LOG_KEY,
+                Option.ID_C_FISH_KEY,
                 Option.ID_C_HACPAI_USER,
                 Option.ID_C_SPAM,
                 Option.ID_C_INTERACTIVE,
@@ -94,7 +95,9 @@ public class Options {
                 Option.ID_C_ENABLE_AUTO_FLUSH_GITHUB,
                 Option.ID_C_MY_GITHUB_ID,
                 Option.ID_C_SEND_KEY,
-                Option.ID_C_HELP_IMPROVE_PLAN
+                Option.ID_C_HELP_IMPROVE_PLAN,
+                Option.ID_C_IMAGE_UPLOAD_COMPRESS,
+                Option.ID_C_THUMB_COMPRESS
         );
         return optionList;
     }
@@ -142,11 +145,12 @@ public class Options {
                 // Bolo 字段
                 new Object[]{Option.ID_C_HACPAI_USER, Option.CATEGORY_C_PREFERENCE, ""},
                 new Object[]{Option.ID_C_B3LOG_KEY, Option.CATEGORY_C_PREFERENCE, ""},
+                new Object[]{Option.ID_C_FISH_KEY, Option.CATEGORY_C_PREFERENCE, ""},
                 new Object[]{Option.ID_C_MAX_ARCHIVE, Option.CATEGORY_C_PREFERENCE, Option.DefaultPreference.DEFAULT_MAX_ARCHIVE},
                 new Object[]{Option.ID_C_MAIL_BOX, Option.CATEGORY_C_PREFERENCE, ""},
                 new Object[]{Option.ID_C_MAIL_USERNAME, Option.CATEGORY_C_PREFERENCE, ""},
                 new Object[]{Option.ID_C_MAIL_PASSWORD, Option.CATEGORY_C_PREFERENCE, ""},
-                new Object[]{Option.ID_C_TUCHUANG_CONFIG, Option.CATEGORY_C_PREFERENCE, "hacpai"},
+                new Object[]{Option.ID_C_TUCHUANG_CONFIG, Option.CATEGORY_C_PREFERENCE, "local<<>>./image"},
                 new Object[]{Option.ID_C_REPLY_REMIND, Option.CATEGORY_C_PREFERENCE, ""},
                 new Object[]{Option.ID_C_KANBANNIANG_SELECTOR, Option.CATEGORY_C_PREFERENCE, ""},
                 new Object[]{Option.ID_C_SPAM, Option.CATEGORY_C_PREFERENCE, ""},
@@ -159,7 +163,9 @@ public class Options {
                 new Object[]{Option.ID_C_ENABLE_AUTO_FLUSH_GITHUB, Option.CATEGORY_C_PREFERENCE, "false"},
                 new Object[]{Option.ID_C_MY_GITHUB_ID, Option.CATEGORY_C_PREFERENCE, ""},
                 new Object[]{Option.ID_C_SEND_KEY, Option.CATEGORY_C_PREFERENCE, ""},
-                new Object[]{Option.ID_C_HELP_IMPROVE_PLAN, Option.CATEGORY_C_PREFERENCE, ""}
+                new Object[]{Option.ID_C_HELP_IMPROVE_PLAN, Option.CATEGORY_C_PREFERENCE, ""},
+                new Object[]{Option.ID_C_IMAGE_UPLOAD_COMPRESS, Option.CATEGORY_C_PREFERENCE, "1.0"},
+                new Object[]{Option.ID_C_THUMB_COMPRESS, Option.CATEGORY_C_PREFERENCE, "1.0"}
         );
         return optList;
     }

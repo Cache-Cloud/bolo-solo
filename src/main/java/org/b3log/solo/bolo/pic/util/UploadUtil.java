@@ -112,7 +112,11 @@ public class UploadUtil {
                 break;
             case "picuang":
                 String picuangSite = config.split("<<>>")[1];
-                String picuangPassword = config.split("<<>>")[2];
+                String picuangPassword = "";
+                try {
+                    picuangPassword = config.split("<<>>")[2];
+                } catch (Exception ignored) {
+                }
                 CloseableHttpClient picuangHttpClient = new PassSSL().createSSLClientDefault();
                 try {
                     HttpPost httpPost = new HttpPost(picuangSite + "/upload/auth?password=" + picuangPassword);
@@ -152,8 +156,16 @@ public class UploadUtil {
 
                 Auth qiniuAuth = Auth.create(qiniuAccessKey, qiniuSecretKey);
                 String qiniuUpToken = qiniuAuth.uploadToken(qiniuBucket);
+
+                String fileName = file.getName();
+                int index = fileName.lastIndexOf(".");
+                String extName = fileName.substring(index + 1, fileName.length());
+                String mainName = fileName.substring(0, index);
+
+                String key = mainName + "_" + System.currentTimeMillis() + "." + extName;
+
                 try {
-                    Response response = qiniuUploadManager.put(localFilePath, null, qiniuUpToken);
+                    Response response = qiniuUploadManager.put(localFilePath, key, qiniuUpToken);
                     DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
                     result = qiniuTreaty + "://" + qiniuDomain + "/" + putRet.key;
                 } catch (QiniuException e) {

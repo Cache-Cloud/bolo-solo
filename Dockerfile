@@ -1,4 +1,4 @@
-FROM maven:3.8-jdk-8-openj9 as MVN_BUILD
+FROM docker.io/library/maven:3.8.5-openjdk-8-slim as MVN_BUILD
 
 WORKDIR /opt/bolo/
 ADD . /tmp

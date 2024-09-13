@@ -219,6 +219,17 @@ public final class Option {
     public static final String ID_C_ARTICLE_LIST_STYLE = "articleListStyle";
 
     /**
+     * Article Image Upload Compress.
+     */
+    public static final String ID_C_IMAGE_UPLOAD_COMPRESS = "imageUploadCompress";
+
+    /**
+     * Article Thumb Compress.
+     */
+    public static final String ID_C_THUMB_COMPRESS = "thumbCompress";
+
+
+    /**
      * Key of article/page comment-able.
      */
     public static final String ID_C_COMMENTABLE = "commentable";
@@ -318,6 +329,11 @@ public final class Option {
      * Key of hacpai username.
      */
     public static final String ID_C_HACPAI_USER = "hacpaiUser";
+
+    /**
+     * Key of FishPi key.
+     */
+    public static final String ID_C_FISH_KEY = "fishKey";
 
     /**
      * Key of B3log key.
@@ -606,6 +622,12 @@ public final class Option {
          * Default max archive.
          */
         public static final String DEFAULT_MAX_ARCHIVE = "-1";
+
+
+        public static final String DEFAULT_IMAGE_UPLOAD_COMPRESS = "10";
+
+
+        public static final String DEFAULT_THUMB_COMPRESS = "10";
 
         /**
          * Default B3log username.

@@ -23,7 +23,7 @@
     <head>
         <@head title="${adminConsoleLabel} - ${blogTitle}">
             <link type="text/css" rel="stylesheet" href="${staticServePath}/scss/admin.css?${staticResourceVersion}" />
-            <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.css" />
+            <link type="text/css" rel="stylesheet" href="${staticServePath}/js/lib/Chart.min.css" />
             <meta name="robots" content="fn__none" />
             <link href="https://ftp.stackoverflow.wiki/bolo/start/css/font-awesome.min.css" rel="stylesheet">
         </@head>
@@ -191,9 +191,11 @@
             <script type="text/javascript">
                 var data1 = {
                     labels: [
-                        <#list latestArchives?reverse as archiveDate>
-                            "${archiveDate.archiveDateYear}/${archiveDate.archiveDateMonth}",
-                        </#list>
+                        <#if latestArchives?exists && (latestArchives?size > 0)>
+                            <#list latestArchives?reverse as archiveDate>
+                                "${archiveDate.archiveDateYear}/${archiveDate.archiveDateMonth}",
+                            </#list>
+                        </#if>
                     ],
                     datasets: [{
                         label: '文章数量',
@@ -203,9 +205,11 @@
                         pointBackgroundColor: "#36A2EB",
                         pointBorderColor: "#fff",
                         data: [
-                            <#list latestArchives?reverse as archiveDate>
-                                ${archiveDate.archiveDatePublishedArticleCount},
-                            </#list>
+                            <#if latestArchives?exists && (latestArchives?size > 0)>
+                                <#list latestArchives?reverse as archiveDate>
+                                    ${archiveDate.archiveDatePublishedArticleCount},
+                                </#list>
+                            </#if>
                         ],
                     }]
                 };
@@ -214,9 +218,11 @@
                     datasets: [
                         {
                             data: [
-                                <#list tagsTop5 as tag>
-                                    ${tag.tagPublishedRefCount},
-                                </#list>
+                                <#if tagsTop5?exists && (tagsTop5?size > 0)>
+                                    <#list tagsTop5 as tag>
+                                        ${tag.tagPublishedRefCount},
+                                    </#list>
+                                </#if>
                             ],
                             backgroundColor: [
                                 'rgb(254,67,101)',
@@ -229,9 +235,11 @@
                     ],
 
                     labels: [
-                        <#list tagsTop5 as tag>
-                            "${tag.tagTitle}",
-                        </#list>
+                        <#if tagsTop5?exists && (tagsTop5?size > 0)>
+                            <#list tagsTop5 as tag>
+                                "${tag.tagTitle}",
+                            </#list>
+                        </#if>
                     ]
                 };
             </script>
@@ -240,7 +248,7 @@
             </div>
         </div>
         <script src="${staticServePath}/js/lib/compress/admin-lib.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vditor@3.8.5/dist/index.min.js"></script>
+        <script src="https://file.fishpi.cn/vditor/3.8.13/dist/index.min.js"></script>
         <script src="${staticServePath}/js/common.js"></script>
         <#if "" == miniPostfix>
         <script src="${staticServePath}/js/admin/admin.js"></script>
@@ -267,7 +275,7 @@
         <#else>
         <script src="${staticServePath}/js/admin/admin.min.js?${staticResourceVersion}"></script>
         </#if>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <script src="${staticServePath}/js/lib/Chart.min.js"></script>
         <script type="text/javascript" src="${staticServePath}/js/bolo/sweetalert.min.js"></script>
         <script>
             function noBtnSwal(msg, timer) {
